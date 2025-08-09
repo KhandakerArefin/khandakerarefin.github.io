@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Research &amp; Projects | Khandaker Shams Arefin</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Header with navigation -->
+  <header>
+    <div class="nav-container">
+      <div class="brand">Khandaker&nbsp;Shams&nbsp;Arefin</div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="research.html">Research &amp; Projects</a></li>
+          <li><a href="publications.html">Publications</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="cv.html">CV</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="container">
+    <h2 class="section-title">Research &amp; Projects</h2>
+    <p>Here you can explore the research projects and hardware designs I have been working on, ranging from neural network accelerators to embedded robotics. Each project combines rigorous engineering with a passion for pushing the limits of hardware efficiency and capability.</p>
+  </section>
+
+  <!-- Research projects in card grid -->
+  <section class="container">
+    <div class="card-grid">
+      <!-- Edge AI accelerator -->
+      <div class="card">
+        <img src="images/project1.png" alt="Edge AI accelerator" />
+        <div class="card-content">
+          <h3>Edge&nbsp;AI&nbsp;Accelerator</h3>
+          <p>This on‑going project develops an application‑specific integrated circuit (ASIC) for accelerating artificial neural networks (ANNs) on microcontrollers via SPI. The accelerator contains parallel multiply–accumulate units and on‑chip memory, allowing microcontrollers to execute inference with minimal power overhead. It has been tested on MNIST, Fashion&nbsp;MNIST, CIFAR‑10 and CIFAR‑100 across various architectures.</p>
+          <span class="tags">Supervisor:&nbsp;Prof.&nbsp;Dr.&nbsp;Satyendra&nbsp;N.&nbsp;Biswas – Tools:&nbsp;ModelSim,&nbsp;MATLAB,&nbsp;Cadence&nbsp;Virtuoso</span>
+        </div>
+      </div>
+      <!-- Floating point unit -->
+      <div class="card">
+        <img src="images/project2.png" alt="Floating point unit" />
+        <div class="card-content">
+          <h3>Efficient Floating‑Point Unit</h3>
+          <p>Traditional floating‑point units consume excessive cycles and power in neural network accelerators. I designed a logarithmic multiplication and addition unit that dramatically reduces area and energy with only minimal accuracy loss. When tested on datasets such as MNIST and CIFAR‑10, the accelerator achieved accuracy within 1&nbsp;% of conventional MATLAB implementations.</p>
+          <span class="tags">GlobalFoundries&nbsp;12nm &amp; 22nm – Cadence&nbsp;Virtuoso,&nbsp;ModelSim</span>
+        </div>
+      </div>
+      <!-- Human detection robot -->
+      <div class="card">
+        <img src="images/project2.png" alt="Human detection robot" />
+        <div class="card-content">
+          <h3>Human Detection Robot</h3>
+          <p>For my undergraduate thesis I created a personal assistant robot with voice control and navigation using a Raspberry&nbsp;Pi. The robot communicates over Wi‑Fi using gesture, voice and gyroscope inputs and demonstrates applications in home and hospital environments.</p>
+          <span class="tags">Supervisor:&nbsp;Kazi&nbsp;Tauseef&nbsp;Mohammad – TensorFlow,&nbsp;Raspberry&nbsp;Pi</span>
+        </div>
+      </div>
+      <!-- Motor driver and charger unit -->
+      <div class="card">
+        <img src="images/project2.png" alt="Motor driver unit" />
+        <div class="card-content">
+          <h3>Motor Driver &amp; Charger Unit</h3>
+          <p>Designed a high‑performance motor driver and charging circuitry for the Red‑X team competing in the efficient vehicle challenge at Technofest&nbsp;2022. This design enabled an electric vehicle to operate efficiently under competition constraints.</p>
+          <span class="tags">Supervisor:&nbsp;Kazi&nbsp;Tauseef&nbsp;Mohammad – Proteus</span>
+        </div>
+      </div>
+      <!-- Avionic system design -->
+      <div class="card">
+        <img src="images/project2.png" alt="Avionic system" />
+        <div class="card-content">
+          <h3>Avionic System Design</h3>
+          <p>Developed the avionic system for a model rocket as part of the AUST Rocketry Challenge at Technofest&nbsp;2022. The system integrated sensors and control logic to ensure stable flight and telemetry.</p>
+          <span class="tags">Supervisor:&nbsp;Prof.&nbsp;Dr.&nbsp;Omar&nbsp;Farrok – Proteus,&nbsp;Arduino&nbsp;IDE</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy;&nbsp;2025&nbsp;Khandaker&nbsp;Shams&nbsp;Arefin. All rights reserved.</p>
+    <div class="social">
+      <a href="mailto:khandaker.shams.arefin@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.researchgate.net/" target="_blank" rel="noopener">ResearchGate</a>
+    </div>
+  </footer>
+
+</body>
+</html>
