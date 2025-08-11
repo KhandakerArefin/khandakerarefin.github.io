@@ -1,25 +1,24 @@
 /*
- * Main stylesheet for Khandaker Shams Arefin’s personal website.
+ * Custom stylesheet for Khandaker Shams Arefin’s personal website.
  *
- * This file defines the colour palette, typography and layout rules used
- * throughout the site. The design uses a simple, modern aesthetic with
- * technology‑inspired blues and neutral backgrounds. Navigation is kept
- * consistent across pages and cards are used to present projects cleanly.
+ * Inspired by the clean, two‑column layout of Farah Ferdaus’ academic page,
+ * this CSS defines a light colour palette and responsive layout rules.
+ * A fixed sidebar on larger screens contains a portrait, basic details and
+ * navigation links, while the main content area scrolls independently.
  */
 
-/* Colour palette and typography */
+/* Colour palette and sizing */
 :root {
-  --primary: #2563eb;      /* vivid blue used for highlights and links */
-  --primary-dark: #1e40af; /* darker shade for hover states */
-  --secondary: #0f172a;    /* dark blue‑grey for text */
-  --light: #f8fafc;        /* light grey background */
-  --card-bg: #ffffff;      /* white for cards */
-  --border-radius: 8px;
-  --max-width: 1200px;
-  --font-body: 'Segoe UI', Tahoma, sans-serif;
+  --primary: #2563eb;        /* vivid blue used for highlights and active links */
+  --primary-dark: #1e40af;   /* deeper shade for headings and accents */
+  --secondary: #0f172a;      /* dark slate for body text */
+  --background: #f8fafc;     /* very light grey page background */
+  --card-bg: #ffffff;        /* white for sidebar and cards */
+  --border-radius: 8px;      /* consistent rounding for buttons and panels */
+  --max-width: 1100px;      /* maximum width for main content sections */
 }
 
-/* Reset */
+/* Reset default margins and paddings */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -27,252 +26,354 @@
 }
 
 body {
-  font-family: var(--font-body);
-  background-color: var(--light);
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  background-color: var(--background);
   color: var(--secondary);
   line-height: 1.6;
+  /*
+   * Make the page occupy the full viewport height and use flexbox so the
+   * footer can stick to the bottom of the page even if there isn’t much
+   * content. The main element will grow to fill the available space.
+   */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-/* Global container to constrain width */
-.container {
-  width: 90%;
-  max-width: var(--max-width);
-  margin: 0 auto;
+/* Wrapper defines a two‑column layout on desktops and a single column on narrow screens */
+.wrapper {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar holds the portrait, name, tagline, navigation and social links */
+.sidebar {
+  background-color: var(--card-bg);
+  width: 280px;
+  padding: 2rem 1rem;
+  border-right: 1px solid #e5e7eb;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+/* Profile image appears at the top of the sidebar */
+.profile-img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 1rem;
+}
+
+/* Name heading */
+.sidebar h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 0.25rem;
+}
+
+/* Tagline underneath the name */
+.sidebar .title {
+  font-size: 0.9rem;
+  text-align: center;
+  color: var(--primary-dark);
+  margin-bottom: 1rem;
+}
+
+/* Contact details list */
+.contact-info {
+  list-style: none;
+  margin-bottom: 1.5rem;
+  padding-left: 0.5rem;
+}
+.contact-info li {
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+.contact-info li a {
+  color: var(--secondary);
+  text-decoration: none;
+  word-break: break-all;
+}
+.contact-info li a:hover {
+  color: var(--primary);
+}
+
+/* Navigation menu */
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+}
+.sidebar-nav a {
+  color: var(--secondary);
+  text-decoration: none;
+  padding: 0.4rem 0.6rem;
+  border-radius: var(--border-radius);
+  transition: background-color 0.2s ease, color 0.2s ease;
+  margin-bottom: 0.25rem;
+}
+.sidebar-nav a.active,
+.sidebar-nav a:hover {
+  background-color: var(--primary);
+  color: var(--card-bg);
+}
+
+/* Social links displayed at the bottom of the sidebar */
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: auto;
+  flex-wrap: wrap;
+}
+.social-links a {
+  color: var(--primary);
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+/* Main content area */
+.content {
+  flex-grow: 1;
+  padding: 2rem;
+}
+.content section {
+  margin-bottom: 2.5rem;
+}
+.content h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--primary);
+  display: inline-block;
+  padding-bottom: 0.4rem;
+}
+.content h3 {
+  font-size: 1.4rem;
+  margin: 1.5rem 0 0.8rem;
+  color: var(--primary-dark);
+}
+.content p {
+  margin-bottom: 1rem;
+}
+.content ul {
+  margin-left: 1.5rem;
+  list-style: disc;
+}
+
+/* Card layout for research projects */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+.card {
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   padding: 1rem;
 }
+.card h3 {
+  margin-top: 0;
+  color: var(--primary-dark);
+}
+.card p {
+  font-size: 0.95rem;
+}
 
-/* Navigation bar */
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .wrapper {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: static;
+    border-right: none;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  .sidebar-nav {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .sidebar-nav a {
+    margin: 0.25rem 0.5rem;
+  }
+  .content {
+    padding: 1rem;
+  }
+}
+
+/*
+ * Top‑navigation layout definitions. These rules override the two‑column sidebar
+ * layout when used in pages with a header and hero section. The previous
+ * sidebar definitions remain for backwards compatibility but are not applied
+ * when the sidebar HTML is absent.
+ */
+
+/* Sticky header with site title and navigation links */
 header {
   background-color: var(--card-bg);
+  padding: 1rem 2rem;
   position: sticky;
   top: 0;
   z-index: 1000;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 0;
 }
-
-nav .logo {
+header .logo {
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--primary);
 }
-
-nav a {
+header nav {
+  display: flex;
+  align-items: center;
+}
+header nav a {
   color: var(--secondary);
   text-decoration: none;
-  margin-left: 1.2rem;
+  margin-left: 1.5rem;
   font-weight: 500;
   transition: color 0.2s ease;
 }
-
-nav a:hover {
+header nav a:hover {
+  color: var(--primary);
+}
+header nav a.active {
   color: var(--primary);
 }
 
-/* Hero section */
+/* Hero section for the home page */
 .hero {
-  min-height: 60vh;
+  background-color: #1f2937; /* dark grey background */
+  color: var(--card-bg);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  background-position: center;
-  background-size: cover;
-  color: var(--light);
+  min-height: 55vh;
   padding: 4rem 1rem;
-  position: relative;
-  overflow: hidden;
 }
-
-.hero::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  /* Dark overlay to ensure contrast and obscure any embedded text in the image */
-  background-color: rgba(0, 0, 0, 0.8);
-  z-index: 1;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  color: var(--light);
-}
-
 .hero h1 {
   font-size: 3rem;
   margin-bottom: 0.5rem;
 }
-
 .hero p {
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   max-width: 600px;
-  margin: 0 auto 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
-.btn {
-  display: inline-block;
-  padding: 0.75rem 1.5rem;
-  border-radius: var(--border-radius);
+/* Constrain main content width and centre it */
+main {
+  width: 90%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 3rem 0;
+
+  /* Allow the main content area to grow and push the footer down so the
+   * footer always appears at the bottom of the viewport when there is
+   * little content.
+   */
+  flex: 1;
+}
+
+/* Buttons */
+.btn-primary {
   background-color: var(--primary);
   color: var(--card-bg);
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--border-radius);
   text-decoration: none;
   font-weight: 600;
+  display: inline-block;
   transition: background-color 0.2s ease;
 }
-
-.btn:hover {
+.btn-primary:hover {
   background-color: var(--primary-dark);
 }
-
-/* Section styling */
-section {
-  padding: 3rem 0;
-}
-
-section h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  border-bottom: 2px solid var(--primary);
-  display: inline-block;
-  padding-bottom: 0.3rem;
-}
-
-h3 {
-  margin-top: 2rem;
-  margin-bottom: 0.8rem;
-  font-size: 1.5rem;
-  color: var(--primary-dark);
-}
-
-/* Card layout */
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
-.card {
-  background-color: var(--card-bg);
+.btn-secondary {
+  background-color: var(--primary-dark);
+  color: var(--card-bg);
+  padding: 0.6rem 1.2rem;
   border-radius: var(--border-radius);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-block;
+  transition: background-color 0.2s ease;
+}
+.btn-secondary:hover {
+  background-color: var(--primary);
 }
 
-.card img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-}
-
-.card-content {
-  padding: 1rem;
-  flex-grow: 1;
-}
-
-.card-content h3 {
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-  color: var(--primary-dark);
-}
-
-.card-content p {
-  margin-top: 0;
-  margin-bottom: 1rem;
-  font-size: 0.95rem;
-}
-
-.card-content .tags {
-  margin-top: auto;
+/* Contact cards layout */
+.contact-cards {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+.contact-cards .card {
+  flex: 1 1 220px;
+  min-width: 200px;
+  max-width: 240px;
+  text-align: center;
 }
 
-.tag {
-  background-color: var(--primary);
-  color: var(--card-bg);
-  border-radius: 3px;
-  padding: 0.2rem 0.5rem;
-  font-size: 0.75rem;
-}
-
-/* Profile section on About page */
-.profile {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
-}
-
-.profile img {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid var(--primary);
-}
-
-.profile-content {
-  max-width: 700px;
-}
-
-/* PDF embed container */
-.pdf-container {
-  width: 100%;
-  height: 800px;
-  border: none;
-}
-
-/* Contact page */
+/* Contact list styling */
 .contact-list {
   list-style: none;
-  padding: 0;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
+  padding-left: 0;
 }
-
 .contact-list li {
-  margin-bottom: 0.5rem;
+  /* Increase spacing between items to create a roomier contact section */
+  margin-bottom: 1rem;
+  /* Make text larger for better readability and to better match the
+     screenshot’s proportions */
+  font-size: 1.15rem;
 }
-
-.contact-list a {
-  color: var(--primary-dark);
+.contact-list li strong {
+  margin-right: 0.4rem;
+}
+.contact-list li a {
+  color: var(--primary);
   text-decoration: none;
 }
-
-.contact-list a:hover {
+.contact-list li a:hover {
   text-decoration: underline;
+}
+
+/* Icons within contact list */
+/* Icons within contact list */
+.contact-list li svg {
+  /* Increase the size of the icons to make them more prominent */
+  /* Increase the icon size further to more closely match the reference screenshot */
+  width: 1.8rem;
+  height: 1.8rem;
+  /* Do not override the fill colour so that each inline SVG uses its
+     native brand colour defined within the SVG itself. */
+  margin-right: 0.6rem;
+  vertical-align: middle;
 }
 
 /* Footer */
-.footer {
+footer {
   background-color: var(--card-bg);
   padding: 1rem 0;
   text-align: center;
-  font-size: 0.875rem;
+  color: var(--secondary);
+  font-size: 0.9rem;
   border-top: 1px solid #e5e7eb;
-  margin-top: 4rem;
-}
-
-.footer a {
-  color: var(--primary);
-  text-decoration: none;
-  margin: 0 0.5rem;
-}
-
-.footer a:hover {
-  text-decoration: underline;
 }
