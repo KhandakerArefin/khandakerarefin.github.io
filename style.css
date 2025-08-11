@@ -377,3 +377,30 @@ footer {
   font-size: 0.9rem;
   border-top: 1px solid #e5e7eb;
 }
+
+/*
+ * Responsive header navigation for narrow viewports. On screens narrower than
+ * 600px, stack the navigation links vertically underneath the site title
+ * instead of displaying them horizontally. This keeps the menu from
+ * overflowing on mobile devices.
+ */
+@media (max-width: 600px) {
+  /* Stack the site title and navigation vertically but keep the navigation
+     items arranged horizontally on mobile. Allow wrapping to multiple lines
+     when the viewport is too narrow, and centre the navigation under the
+     name. */
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  header nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+  header nav a {
+    margin: 0.25rem 0.75rem 0.25rem 0;
+  }
+}
